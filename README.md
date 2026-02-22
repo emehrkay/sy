@@ -18,7 +18,7 @@ There are two ways to interact with this application: http and cli. For applicat
 
 ### Dependencies
 
-* `github.com/spf13/cobra` -- It makes build CLIs a bit easier
+* `github.com/spf13/cobra` -- It makes building CLIs a bit easier
 
 ### Omitted for Brevity
 
@@ -27,6 +27,7 @@ There are two ways to interact with this application: http and cli. For applicat
 * Custom errors -- I love creating both sentinel and custom error types. It makes it easier to normalize at the public interface level (convert an ErrNotFound to 404 for example)
 * Edge cases -- Since I used the device simulator as my test bed, I wasn't quite able to harden the code against some corner cases like when a device is considered offline and see now that affects the numbers
 * Context cancellations -- In a real application I would use the context to handle timeouts and cancellations etc
+* Validation -- Absolutely no validation is done against the data that is being sent to the server. In a real application I would ensure that the data is properly formatted before use
 
 ## Runninng the Application
 
