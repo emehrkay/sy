@@ -24,6 +24,10 @@ func (s *server) createHeartbeat(w http.ResponseWriter, r *http.Request) {
 		DeviceID: deviceID,
 		SentAt:   req.SentAt,
 	})
+	if err != nil {
+		s.respondError(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 
 	s.respondJson(w, nil, http.StatusNoContent)
 }

@@ -31,6 +31,11 @@ func (s *server) createStats(w http.ResponseWriter, r *http.Request) {
 		SentAt:     req.SentAt,
 		UploadTime: req.UploadTime,
 	})
+	if err != nil {
+		s.respondError(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
 	s.respondJson(w, nil, http.StatusNoContent)
 }
 
@@ -40,7 +45,7 @@ func (s *server) getStats(w http.ResponseWriter, r *http.Request) {
 		DeviceID: deviceID,
 	})
 	if err != nil {
-		s.respondError(w, err.Error(), http.StatusBadRequest)
+		s.respondError(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
